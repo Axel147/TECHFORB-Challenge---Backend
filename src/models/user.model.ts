@@ -1,13 +1,12 @@
-import { IUser } from "../interfaces/user.interface";
-import mongoose from "mongoose";
-import { Schema } from "mongoose";
+import mongoose, { Schema } from 'mongoose';
+import { IUser } from '../interfaces/user.interface';
 
 const UserSchema = new Schema({
     id: { type: Number, require: false },
-    name: { type: Number, require: true },
-    lastname: { type: Number, require: true },
-    email: { type: Number, require: true },
-    password: { type: Number, require: true }
+    name: { type: String, require: true },
+    lastname: { type: String, require: true },
+    email: { type: String, require: true },
+    password: { type: String, require: true }
 });
 
 export const User = mongoose.model<IUser>('User', UserSchema);
