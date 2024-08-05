@@ -17,7 +17,11 @@ export class AuthController {
 			if(user){
 				if(bcrypt.compareSync(password, user.password)){
 					const token = jwt.sign(
-						{ userId: user.id, username: user.email },
+						{ 	id: user.id, 
+							name: user.name, 
+							lastname: user.lastname,
+							email: user.email
+						},
 						config.JWT_SECRET,
 						{ expiresIn: '1d' }
 					);			
