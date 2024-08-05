@@ -4,7 +4,7 @@ import { UserRepository } from "../repositories/user.repository";
 const bcrypt = require('bcrypt');
 
 export class UserController{
-    static getAll = async (req: Request, res: Response ) => {
+    static getAll = async (req: Request, res: Response) => {
         const userRepository = new UserRepository();
         try {
             const user = await userRepository.findUsers();
