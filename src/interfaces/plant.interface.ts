@@ -1,4 +1,5 @@
 export interface IPlant{
+    
     id: number;
     name: string;
     readings: string;
@@ -6,4 +7,5 @@ export interface IPlant{
     mediumAlerts: string;
     redAlerts: string;
     disableSensors: string;
+    valid: boolean;
 }

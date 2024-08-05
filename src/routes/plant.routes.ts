@@ -5,7 +5,10 @@ import { PlantController } from "../controllers/plant.controller";
 const router = Router()
 
 router.get("/", PlantController.getAll)
+router.get("/total/:field", PlantController.totalFieldSum)
 
 router.post("/", /*validateRegister,*/ PlantController.createPlant)
+
+router.patch("/:id", PlantController.deletePlant)
 
 export default router;

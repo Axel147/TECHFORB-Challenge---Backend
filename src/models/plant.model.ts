@@ -8,6 +8,7 @@ export class Plant implements IPlant{
     mediumAlerts;
     redAlerts;
     disableSensors;
+    valid;
 
     constructor(){
         this.id = 0,
@@ -17,5 +18,10 @@ export class Plant implements IPlant{
         this.mediumAlerts = "",
         this.redAlerts = "",
         this.disableSensors = ""
+        this.valid = true
+    }
+
+    setValid(){
+        this.valid = false;
     }
 }
