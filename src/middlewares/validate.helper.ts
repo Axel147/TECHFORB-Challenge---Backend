@@ -1,11 +1,11 @@
 import { validationResult } from 'express-validator';
+import { Request, Response, NextFunction } from 'express';
 
-export const validateResult = (req, res, next) => {
+export const validateResult = (req: Request, res: Response, next: NextFunction) => {
 	try {
 		validationResult(req).throw();
 		return next();
-	} catch (err) {
-		res.status(403);
-		res.send({ error: err.array() });
+	} catch (error) {
+		return res.status(403).json({ error });
 	}
 };

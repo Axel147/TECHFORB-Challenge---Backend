@@ -18,7 +18,7 @@ export class UserRepository {
 
     createUser = async (user: User) => {
         const res = await pool.query(
-            'INSERT INTO "challenge"."user" (name, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING *',
+            'INSERT INTO "challenge"."user" (name, lastname, email, password) VALUES ($1, $2, $3, $4)',
             [user.name, user.lastname, user.email, user.password]
         );
 

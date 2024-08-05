@@ -1,5 +1,7 @@
-import { body } from 'express-validator';
 import { validateResult } from './validate.helper';
+import { Request, Response, NextFunction } from 'express';
+import { body } from 'express-validator';
+
 
 export const validateRegister = [
 	body('email')
@@ -103,7 +105,7 @@ export const validateRegister = [
 				);
 			return true;
 		}),
-	(req, res, next) => {
+	(req: Request, res: Response, next: NextFunction) => {
 		validateResult(req, res, next);
 	}
 ];
