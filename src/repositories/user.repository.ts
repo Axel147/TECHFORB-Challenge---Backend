@@ -18,20 +18,4 @@ export class UserRepository {
         return res.rows[0];
     };
 
-    /*
-    constructor(private readonly userModel: Model<IUser>){}
-
-    async create(user: IUser): Promise<IUser>{
-        const resultado = this.userModel.create(user);
-        console.log(resultado);
-        return resultado;
-    }
-
-    async findAll(): Promise<IUser[]>{
-        const resultado = this.userModel.find();
-        //console.log(resultado);
-        return resultado;
-
-    }
-*/
 }

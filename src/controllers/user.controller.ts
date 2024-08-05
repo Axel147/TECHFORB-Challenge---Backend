@@ -1,11 +1,7 @@
 import { Request, Response } from "express";
-//import { UserRepository } from "../repositories/user.repository";
 import { User } from "../models/user.model";
 import { UserRepository } from "../repositories/user.repository";
-
 const bcrypt = require('bcrypt');
-
-
 
 export class UserController{
     static getAll = async (req: Request, res: Response ) => {
