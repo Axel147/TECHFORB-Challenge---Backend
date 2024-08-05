@@ -9,6 +9,7 @@ router.get("/total/:field", PlantController.totalFieldSum)
 
 router.post("/", /*validateRegister,*/ PlantController.createPlant)
 
-router.patch("/:id", PlantController.deletePlant)
+router.patch("/delete/:id", PlantController.deletePlant)
+router.put("/update/:id", PlantController.updatePlant)
 
 export default router;

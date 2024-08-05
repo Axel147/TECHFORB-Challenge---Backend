@@ -9,7 +9,7 @@ export class PlantController {
             const plant = await plantRepository.findPlants();
             res.status(200).json(plant)
         } catch (error) {
-            res.status(500).json({error});
+            res.status(500).json({ error });
         }
     }
 
@@ -51,53 +51,40 @@ export class PlantController {
             return res.status(500).json(error);
         }
     }
-/*
-    static deletePlant = async (req: Request, res: Response) => {
+
+    static updatePlant = async (req: Request, res: Response) => {
         const { id } = req.params;
-		const idInt = parseInt(id as string);
+        const idInt = parseInt(id as string);
         const plantRepository = new PlantRepository();
+        let plant = new Plant()
 
 		try {
-			const plant = await plantRepository.findById(idInt);
-            try{
-                plant.valid = false;
-                console.log(plant);
-                await plantRepository.deletePlant(plant);
-                try{
-                    return res.status(201).json({ message: 'Plant deleted' });
-                }catch(error){
-                    return res.status(500).json(error);
-                }
-                
-            }catch(error){
-                res.json(error);
-            }
+            const { readings, country, mediumAlerts, redAlerts, disableSensors } = req.body;
+            plant.id = idInt;
+			plant.readings = readings;
+            plant.country = country;
+            plant.mediumAlerts = mediumAlerts;
+            plant.redAlerts = redAlerts;
+            plant.disableSensors = disableSensors;
+			
+			await plantRepository.updatePlant(plant);
+			return res.status(201).json({ message: 'Plant updated' });
 		
 		} catch (error) {
 			return res.status(500).json(error);
 		}
-    }*/
+    }
 
-        static deletePlant = async (req: Request, res: Response) => {
-            const { id } = req.params;
-            const idInt = parseInt(id as string);
-            const plantRepository = new PlantRepository();
-            let plant = new Plant();
+    static deletePlant = async (req: Request, res: Response) => {
+        const { id } = req.params;
+        const idInt = parseInt(id as string);
+        const plantRepository = new PlantRepository();
 
-            try{
-                plant = await plantRepository.findById(idInt);
-                plant.setValid();
-                
-                try {
-                    await plantRepository.deletePlant2(plant);
-                    return res.status(200).json({ message: 'Plant deleted' });
-                } catch (error) {
-                    return res.status(500).json({ message: 'Something goes wrong' });
-                }
-            }catch(error){
-                return res.json({message: error})
-            }
-            
+        try {
+            await plantRepository.deletePlant(idInt);
+            return res.status(200).json({ message: 'Plant deleted' });
+        } catch (error) {
+            return res.status(500).json({ message: 'Something goes wrong' });
         }
-
+    }
 }

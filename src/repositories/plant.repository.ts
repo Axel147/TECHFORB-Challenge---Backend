@@ -42,32 +42,23 @@ export class PlantRepository {
         }
     };
 
-    deletePlant = async (plant: Plant) => {
+    updatePlant = async (plant: Plant) => {
         try {
             const res = await pool.query(
-                `DELETE FROM "challenge"."plant" WHERE id = $1`, [plant.id]);
+                `UPDATE "challenge"."plant" SET readings = $1, country = $2, mediumalerts = $3, redalerts = $4, disablesensors = $5 WHERE id = $6`,
+                [plant.readings, plant.country, plant.mediumAlerts, plant.redAlerts, plant.disableSensors, plant.id]);
             return res.json({message: 'Plant deleted'});
         }catch(error){
             return error;
         }
     };
-
-    deletePlant2 = async (plant: Plant) => {
+    deletePlant = async (id: Number) => {
         try {
             const res = await pool.query(
-                `UPDATE "challenge"."plant" SET valid WHERE id = $1`, [plant.id]);
+                `UPDATE "challenge"."plant" SET valid = false WHERE id = $1`, [id]);
             return res.json({message: 'Plant deleted'});
         }catch(error){
             return error;
         }
     };
-
-    closeConexion = async () => {
-        try {
-            await pool.end();
-        } catch (error) {
-            return error;
-        }
-    }
-
 }
