@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", routes);
-
+/*
 mongoose.connect(MONGODB_URI)
 .then(() => {
     console.log("Conectado a MongoDB Atlas")
@@ -21,3 +21,9 @@ mongoose.connect(MONGODB_URI)
 .catch((error) => {
     console.error("Error al conectar con MongoDB Atlas ", error)
 });
+*/
+
+app.listen(PORT, () => {
+    console.log(`Servidor ejecutandose en http://localhost:${PORT || 3001}/`);
+});
+

@@ -6,6 +6,6 @@ const router = Router()
 
 router.get("/", UserController.getAll)
 
-router.post("/", validateRegister, UserController.createUser)
+router.post("/", /*validateRegister,*/ UserController.createUser)
 
 export default router;

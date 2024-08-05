@@ -1,13 +1,17 @@
-import mongoose, { Schema } from 'mongoose';
-import { IUser } from '../interfaces/user.interface';
+import { IUser } from "../interfaces/user.interface";
 
-const UserSchema = new Schema({
-    id: { type: Number, require: false },
-    name: { type: String, require: true },
-    lastname: { type: String, require: true },
-    email: { type: String, require: true },
-    password: { type: String, require: true }
-});
+export class User implements IUser{
+    id;
+    name;
+    lastname;
+    email;
+    password;
 
-export const User = mongoose.model<IUser>('User', UserSchema);
-
+    constructor(){
+        this.id = 0,
+        this.name = "",
+        this.lastname = "",
+        this.email = "",
+        this.password = ""
+    }
+}
