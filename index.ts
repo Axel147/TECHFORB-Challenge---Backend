@@ -13,7 +13,7 @@ app.use("/", routes);
 
 const port = 3000 //solo para ver si render puede escuchar este puerto
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
     console.log(`Servidor ejecutandose en http://localhost:${port || 3001}/`);
 });
 
