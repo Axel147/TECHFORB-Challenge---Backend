@@ -6,14 +6,12 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(cors)
+app.use(cors);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", routes);
 
-const port = 10000 //solo para ver si render puede escuchar este puerto
-
-app.listen(port, "0.0.0.0", () => {
-    console.log(`Servidor ejecutandose en http://localhost:${port || 3001}/`);
+app.listen(PORT, () => {
+    console.log(`Servidor ejecutandose en http://localhost:${PORT || 3001}/`);
 });
 
