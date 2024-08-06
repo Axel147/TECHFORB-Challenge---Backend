@@ -11,9 +11,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", routes);
 
-const port = 10000
-const host = '0.0.0.0'
-app.listen(port, host, () => {
-    console.log(`Servidor ejecutandose en ${host}:${port || 3001}/`);
+app.listen(PORT, () => {
+    console.log(`Servidor ejecutandose en http://localhost:${PORT || 3001}/`);
 });
-
