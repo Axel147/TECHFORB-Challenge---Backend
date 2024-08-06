@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-export const PORT = process.env.PORT || 3001;
+export const PORT = process.env.PORT;
 export const USERDB = process.env.USERDB;
 export const HOSTDB = process.env.HOSTDB;
 export const NAMEDB = process.env.NAMEDB;
