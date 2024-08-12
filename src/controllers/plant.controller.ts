@@ -9,7 +9,7 @@ export class PlantController {
             const plant = await plantRepository.findPlants();
             res.status(200).json(plant)
         } catch (error) {
-            res.status(500).json({ error });
+            res.status(500).json(error);
         }
     }
 
@@ -27,7 +27,7 @@ export class PlantController {
             const total = await plantRepository.totalCount(minuscula);
             res.status(200).json(total.rows[0]);
         } catch (error) {
-            res.status(500).json({ error });
+            res.status(500).json(error);
         }
     }
 
@@ -59,8 +59,9 @@ export class PlantController {
         let plant = new Plant()
 
 		try {
-            const { readings, country, mediumAlerts, redAlerts, disableSensors } = req.body;
+            const { name, readings, country, mediumAlerts, redAlerts, disableSensors } = req.body;
             plant.id = idInt;
+            plant.name = name;
 			plant.readings = readings;
             plant.country = country;
             plant.mediumAlerts = mediumAlerts;
