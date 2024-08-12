@@ -6,8 +6,7 @@ export class PlantRepository {
     findPlants = async () => {
         try{
             const res = await pool.query(`SELECT name, readings, country, mediumalerts, redAlerts, disableSensors FROM "challenge"."plant" WHERE valid = true`);
-            //const res = await pool.query(`SELECT name, readings, country, mediumalerts, redAlerts, disableSensors FROM "challenge"."plant"`);
-            return res.rows;
+           return res.rows;
         }catch(error){
             return error;
         }
@@ -45,9 +44,9 @@ export class PlantRepository {
     updatePlant = async (plant: Plant) => {
         try {
             const res = await pool.query(
-                `UPDATE "challenge"."plant" SET readings = $1, country = $2, mediumalerts = $3, redalerts = $4, disablesensors = $5 WHERE id = $6`,
-                [plant.readings, plant.country, plant.mediumAlerts, plant.redAlerts, plant.disableSensors, plant.id]);
-            return res.json({message: 'Plant deleted'});
+                `UPDATE "challenge"."plant" SET name = $1 readings = $2, country = $3, mediumalerts = $4, redalerts = $5, disablesensors = $6 WHERE id = $7`,
+                [plant.name, plant.readings, plant.country, plant.mediumAlerts, plant.redAlerts, plant.disableSensors, plant.id]);
+            return res.status(200).json({message: 'Plant deleted'});
         }catch(error){
             return error;
         }
