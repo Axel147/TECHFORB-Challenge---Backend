@@ -44,9 +44,9 @@ export class PlantRepository {
     updatePlant = async (plant: Plant) => {
         try {
             const res = await pool.query(
-                `UPDATE "challenge"."plant" SET name = $1 readings = $2, country = $3, mediumalerts = $4, redalerts = $5, disablesensors = $6 WHERE id = $7`,
-                [plant.name, plant.readings, plant.country, plant.mediumAlerts, plant.redAlerts, plant.disableSensors, plant.id]);
-            return res.status(200).json({message: 'Plant deleted'});
+                `UPDATE "challenge"."plant" SET name = $1 , country = $2, readings = $3, mediumalerts = $4, redalerts = $5, disablesensors = $6 WHERE id = $7`,
+                [plant.name, plant.country, plant.readings, plant.mediumAlerts, plant.redAlerts, plant.disableSensors, plant.id]);
+            return res.status(200).json({message: 'Plant update'});
         }catch(error){
             return error;
         }
